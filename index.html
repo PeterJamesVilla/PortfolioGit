@@ -70,6 +70,18 @@ td.spacer { width: 3%; }
   color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;
   font-family:"Courier New",Courier,monospace;border:2px solid #fff;box-shadow:0 0 0 2px rgb(0,0,128)}
 @media (max-width:800px){.apptile{width:42%}}
+/* Group sub-bar (Active / Inactive) */
+.launchbar{max-width:980px;margin:14px auto 2px;padding:4px 12px;display:flex;align-items:center;gap:12px;
+  background:rgb(0,0,128);color:#fff;font-family:"Courier New",Courier,monospace;font-size:13px;
+  letter-spacing:1px;text-transform:uppercase;font-weight:700}
+.launchbar.idle{background:#7a7f95}
+.launchbar .ct{margin-left:auto;font-size:11px;opacity:.85;letter-spacing:.5px}
+/* Inactive tiles read as archived/offline */
+.apptile.inactive{border-color:#8b90a3;color:#5a5f72;background:#f3f3f6}
+.apptile.inactive:hover{background:#e9e9ef}
+.apptile.inactive svg{stroke:#8b90a3 !important;opacity:.85}
+.apptile.inactive .numbadge{background:#8b90a3;box-shadow:0 0 0 2px #8b90a3}
+.apptile.inactive circle[fill],.apptile.inactive polygon[fill],.apptile.inactive path[fill]{fill:#8b90a3 !important}
 
 /* ── Buttons / CTA ── */
 .btnrow { text-align: center; margin: 8px 0 14px; }
@@ -173,12 +185,12 @@ a.download .meta { font-size: 14px; color: #333; font-weight: normal; text-decor
       <a href="#live-systems">Live Systems</a>
       <input type="checkbox" id="drop-3">
       <ul>
-        <li><a href="scada/">Hydro SCADA</a></li>
-        <li><a href="dcsketch/">DCSketch</a></li>
-        <li><a href="traffic-oracle/">Traffic Oracle</a></li>
-        <li><a href="combined-cycle-sim/">Combined-Cycle Sim</a></li>
-        <li><a href="AR/PLCview/">PLCview</a></li>
         <li><a href="l5x/">L5X Studio</a></li>
+        <li><a href="dcsketch/">DCSketch</a></li>
+        <li><a href="AR/PLCview/">PLCview</a></li>
+        <li><a href="traffic-oracle/">Traffic Oracle (archived)</a></li>
+        <li><a href="scada/">Hydro SCADA (archived)</a></li>
+        <li><a href="combined-cycle-sim/">Combined-Cycle Sim (archived)</a></li>
       </ul>
     </li>
     <li><a href="helpline/">Helpline</a></li>
@@ -196,59 +208,22 @@ a.download .meta { font-size: 14px; color: #333; font-weight: normal; text-decor
 <!-- Live Systems — app selector -->
 <div class="section" id="live-systems" style="padding-top:14px;padding-bottom:10px">
   <h2 style="text-align:center">Live Systems</h2>
+
+  <div class="launchbar">Active Projects<span class="ct">ONLINE</span></div>
   <div class="applauncher">
-    <a class="apptile" href="scada/">
+    <a class="apptile" href="helpline/">
       <span class="numbadge">1</span>
-      <svg viewBox="0 0 120 100" fill="none" stroke="#000080" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square">
-        <path d="M14 60 Q30 44 46 60 T78 60 T110 60" stroke-linecap="round"/>
-        <path d="M14 76 Q30 60 46 76 T78 76 T110 76" stroke-linecap="round" opacity="0.55"/>
-        <circle cx="60" cy="30" r="10"/>
-        <path d="M60 40 L60 52" stroke-dasharray="4 4"/>
+      <svg viewBox="0 0 120 100" fill="none" stroke="#000080" stroke-width="5" stroke-linejoin="miter" stroke-linecap="round">
+        <path d="M30 60 V52 a30 30 0 0 1 60 0 V60"/>
+        <rect x="18" y="56" width="18" height="26" rx="5"/>
+        <rect x="84" y="56" width="18" height="26" rx="5"/>
+        <path d="M84 82 Q84 92 66 92"/>
+        <circle cx="62" cy="92" r="4" fill="#000080"/>
       </svg>
-      <h3>Hydro SCADA</h3>
-    </a>
-    <a class="apptile" href="dcsketch/">
-      <span class="numbadge">2</span>
-      <svg viewBox="0 0 120 100" fill="none" stroke="#000080" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square">
-        <rect x="18" y="16" width="84" height="68"/>
-        <path d="M18 34 L102 34"/>
-        <circle cx="40" cy="55" r="7"/>
-        <path d="M40 62 L40 78 M60 34 L60 84 M80 46 L96 46"/>
-      </svg>
-      <h3>DCSketch</h3>
-    </a>
-    <a class="apptile" href="traffic-oracle/">
-      <span class="numbadge">3</span>
-      <svg viewBox="0 0 120 100" fill="none" stroke="#000080" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square">
-        <path d="M20 84 L48 16 L72 16 L100 84" />
-        <path d="M32 56 L88 56" stroke-dasharray="6 6"/>
-        <circle cx="48" cy="70" r="5" fill="#000080"/>
-        <circle cx="72" cy="70" r="5" fill="#000080"/>
-      </svg>
-      <h3>Traffic Oracle</h3>
-    </a>
-    <a class="apptile" href="combined-cycle-sim/">
-      <span class="numbadge">4</span>
-      <svg viewBox="0 0 120 100" fill="none" stroke="#000080" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square">
-        <polygon points="24,50 54,58 54,78 24,86"/>
-        <circle cx="66" cy="64" r="8"/>
-        <rect x="80" y="30" width="26" height="50"/>
-        <rect x="88" y="14" width="10" height="18"/>
-      </svg>
-      <h3>Combined-Cycle Sim</h3>
-    </a>
-    <a class="apptile" href="AR/PLCview/">
-      <span class="numbadge">5</span>
-      <svg viewBox="0 0 120 100" fill="none" stroke="#000080" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square">
-        <rect x="14" y="20" width="34" height="60"/>
-        <path d="M48 34 L74 34 M48 50 L74 50 M48 66 L74 66"/>
-        <path d="M80 50 L104 50" stroke-dasharray="4 4"/>
-        <path d="M92 30 L108 42 L108 58 L92 70 Z"/>
-      </svg>
-      <h3>PLCview</h3>
+      <h3>Helpline</h3>
     </a>
     <a class="apptile" href="l5x/">
-      <span class="numbadge">6</span>
+      <span class="numbadge">2</span>
       <svg viewBox="0 0 120 100" fill="none" stroke="#000080" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square">
         <path d="M20 12 L20 88 M100 12 L100 88"/>
         <path d="M20 34 L48 34 M60 34 L100 34"/>
@@ -258,6 +233,60 @@ a.download .meta { font-size: 14px; color: #333; font-weight: normal; text-decor
         <circle cx="82" cy="34" r="9"/>
       </svg>
       <h3>L5X Studio</h3>
+    </a>
+    <a class="apptile" href="dcsketch/">
+      <span class="numbadge">3</span>
+      <svg viewBox="0 0 120 100" fill="none" stroke="#000080" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square">
+        <rect x="18" y="16" width="84" height="68"/>
+        <path d="M18 34 L102 34"/>
+        <circle cx="40" cy="55" r="7"/>
+        <path d="M40 62 L40 78 M60 34 L60 84 M80 46 L96 46"/>
+      </svg>
+      <h3>DCSketch</h3>
+    </a>
+    <a class="apptile" href="AR/PLCview/">
+      <span class="numbadge">4</span>
+      <svg viewBox="0 0 120 100" fill="none" stroke="#000080" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square">
+        <rect x="14" y="20" width="34" height="60"/>
+        <path d="M48 34 L74 34 M48 50 L74 50 M48 66 L74 66"/>
+        <path d="M80 50 L104 50" stroke-dasharray="4 4"/>
+        <path d="M92 30 L108 42 L108 58 L92 70 Z"/>
+      </svg>
+      <h3>PLCview</h3>
+    </a>
+  </div>
+
+  <div class="launchbar idle">Inactive Projects<span class="ct">ARCHIVED</span></div>
+  <div class="applauncher">
+    <a class="apptile inactive" href="traffic-oracle/">
+      <span class="numbadge">5</span>
+      <svg viewBox="0 0 120 100" fill="none" stroke="#000080" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square">
+        <path d="M20 84 L48 16 L72 16 L100 84" />
+        <path d="M32 56 L88 56" stroke-dasharray="6 6"/>
+        <circle cx="48" cy="70" r="5" fill="#000080"/>
+        <circle cx="72" cy="70" r="5" fill="#000080"/>
+      </svg>
+      <h3>Traffic Oracle</h3>
+    </a>
+    <a class="apptile inactive" href="scada/">
+      <span class="numbadge">6</span>
+      <svg viewBox="0 0 120 100" fill="none" stroke="#000080" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square">
+        <path d="M14 60 Q30 44 46 60 T78 60 T110 60" stroke-linecap="round"/>
+        <path d="M14 76 Q30 60 46 76 T78 76 T110 76" stroke-linecap="round" opacity="0.55"/>
+        <circle cx="60" cy="30" r="10"/>
+        <path d="M60 40 L60 52" stroke-dasharray="4 4"/>
+      </svg>
+      <h3>Hydro SCADA</h3>
+    </a>
+    <a class="apptile inactive" href="combined-cycle-sim/">
+      <span class="numbadge">7</span>
+      <svg viewBox="0 0 120 100" fill="none" stroke="#000080" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square">
+        <polygon points="24,50 54,58 54,78 24,86"/>
+        <circle cx="66" cy="64" r="8"/>
+        <rect x="80" y="30" width="26" height="50"/>
+        <rect x="88" y="14" width="10" height="18"/>
+      </svg>
+      <h3>Combined-Cycle Sim</h3>
     </a>
   </div>
 </div>
