@@ -70,20 +70,6 @@ a.download:visited { color: rgb(85, 26, 139); }
 a.download:hover { color: rgb(238, 0, 0); }
 a.download .meta { font-size: 14px; color: #333; font-weight: normal; text-decoration: none; display: block; }
 
-/* ── Contact modal ── */
-.contact-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
-.contact-modal { background: #fff; max-width: 520px; width: 100%; padding: 26px 28px; position: relative; border: 3px solid rgb(0, 0, 128); }
-.contact-modal h3 { text-align: left; font-style: italic; margin-bottom: 6px; }
-.contact-modal .modal-sub { font-size: 16px; color: #555; margin-bottom: 16px; }
-.contact-modal label { display: block; font-size: 15px; font-weight: 600; color: rgb(0, 0, 128); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
-.contact-modal input, .contact-modal textarea { width: 100%; padding: 9px 10px; border: 1px solid #999; font-size: 17px; margin-bottom: 12px; box-sizing: border-box; }
-.contact-modal textarea { min-height: 110px; resize: vertical; }
-.contact-modal .modal-send-btn { background: rgb(0, 0, 128); color: #fff; padding: 11px 26px; border: none; font-size: 18px; font-weight: 600; cursor: pointer; }
-.contact-modal .modal-send-btn:hover { background: #000; }
-.contact-modal .modal-close { position: absolute; top: 8px; right: 14px; background: none; border: none; font-size: 30px; color: #888; cursor: pointer; line-height: 1; }
-.contact-modal .modal-close:hover { color: rgb(0, 0, 128); }
-.contact-modal .modal-success { display: none; text-align: center; padding: 24px 0; }
-
 /* ── 90s webmaster maximalism ── */
 .caution-bar { height: 20px; margin: 0; padding: 0; background: repeating-linear-gradient(45deg, #000 0, #000 17px, #ffcc00 17px, #ffcc00 34px); background-size: 48px 48px; animation: barberpole 0.8s linear infinite; }
 @keyframes barberpole { from { background-position: 0 0; } to { background-position: 48px 0; } }
@@ -156,7 +142,6 @@ a.download .meta { font-size: 14px; color: #333; font-weight: normal; text-decor
     <li><a href="#projects">Sample Projects</a></li>
     <li><a href="#resources">Resources</a></li>
     <li><a href="helpline/">Helpline</a></li>
-    <li><a href="#" onclick="document.getElementById('contactModal').style.display='flex'; document.getElementById('contactSubject').value='Project Quote Request'; return false;">Contact Us</a></li>
   </ul>
 </nav>
 
@@ -263,40 +248,6 @@ a.download .meta { font-size: 14px; color: #333; font-weight: normal; text-decor
   </a>
 </div>
 
-<!-- Contact / CTA -->
-<div class="section" id="contact">
-  <h2>Contact Us</h2>
-  <p>Send a sketch or sample. You'll get a clear scope and a fixed quote.</p>
-  <div class="btnrow">
-    <a href="#" class="button" onclick="document.getElementById('contactModal').style.display='flex'; document.getElementById('contactSubject').value='Project Quote Request'; return false;">Request a Quote</a>
-    <a href="https://buy.stripe.com/aFa6oH0nx34I5DL4SN6J200" class="button" target="_blank" rel="noopener noreferrer">Book Consulting</a>
-  </div>
-</div>
-
-<!-- Contact Modal -->
-<div class="contact-modal-overlay" id="contactModal" onclick="if(event.target===this)this.style.display='none'">
-  <div class="contact-modal">
-    <button class="modal-close" onclick="document.getElementById('contactModal').style.display='none'">&times;</button>
-    <div id="contactForm">
-      <h3>Get in Touch</h3>
-      <p class="modal-sub">Tell us about your part or project. We'll respond within 24 hours &mdash; and everything you share stays confidential.</p>
-      <label for="contactName">Your Name</label>
-      <input type="text" id="contactName" placeholder="Full name" required>
-      <label for="contactEmail">Your Email</label>
-      <input type="email" id="contactEmail" placeholder="you@company.com" required>
-      <label for="contactSubject">Subject</label>
-      <input type="text" id="contactSubject" placeholder="What can we help with?">
-      <label for="contactMessage">Message</label>
-      <textarea id="contactMessage" placeholder="Describe the part or assembly, the manufacturing process you're targeting, and what you already have (sketch, sample, old drawing)..."></textarea>
-      <button class="modal-send-btn" onclick="sendContactEmail()">Send Message</button>
-    </div>
-    <div class="modal-success" id="contactSuccess">
-      <h3>Message Sent</h3>
-      <p class="modal-sub">Thank you for reaching out. We'll get back to you shortly.</p>
-    </div>
-  </div>
-</div>
-
 <!-- Under Construction (webmaster classic) -->
 <div class="caution-bar"></div>
 <div class="construction">
@@ -335,44 +286,10 @@ a.download .meta { font-size: 14px; color: #333; font-weight: normal; text-decor
 
 <!-- Footer -->
 <div class="footer">
-  Copyright 2026 by BlueVector &nbsp;&bull;&nbsp; 2655 Ulmerton Rd, Suite 243, Clearwater, FL 33762
+  Copyright 2026 by BlueVector
   <br>
   <a href="archive/">Previous practice (AI &amp; quality systems) archived</a>
 </div>
-
-<script>
-  function sendContactEmail() {
-    const name = document.getElementById('contactName').value.trim();
-    const email = document.getElementById('contactEmail').value.trim();
-    const subject = document.getElementById('contactSubject').value.trim() || 'BlueVector Inquiry';
-    const message = document.getElementById('contactMessage').value.trim();
-
-    if (!name || !email) {
-      alert('Please fill in your name and email.');
-      return;
-    }
-
-    const body = 'Name: ' + name + '\nEmail: ' + email + '\n\n' + message;
-    const mailtoLink = 'mailto:hello@peterjamesvilla.com'
-      + '?subject=' + encodeURIComponent(subject)
-      + '&body=' + encodeURIComponent(body);
-
-    window.location.href = mailtoLink;
-
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('contactSuccess').style.display = 'block';
-
-    setTimeout(function() {
-      document.getElementById('contactModal').style.display = 'none';
-      document.getElementById('contactForm').style.display = 'block';
-      document.getElementById('contactSuccess').style.display = 'none';
-      document.getElementById('contactName').value = '';
-      document.getElementById('contactEmail').value = '';
-      document.getElementById('contactSubject').value = '';
-      document.getElementById('contactMessage').value = '';
-    }, 3000);
-  }
-</script>
 
 </body>
 </html>
