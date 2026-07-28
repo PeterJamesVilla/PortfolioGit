@@ -27,7 +27,6 @@ CONTROLS (inside the render loop)
     r            reset camera and spin
 
 https://peterjamesvilla.com/denurburator
-contact: hello@peterjamesvilla.com
 """
 
 import argparse

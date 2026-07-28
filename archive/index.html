@@ -2595,13 +2595,6 @@
       return;
     }
 
-    const body = 'Name: ' + name + '\nEmail: ' + email + '\n\n' + message;
-    const mailtoLink = 'mailto:hello@peterjamesvilla.com'
-      + '?subject=' + encodeURIComponent(subject)
-      + '&body=' + encodeURIComponent(body);
-
-    window.location.href = mailtoLink;
-
     document.getElementById('contactForm').style.display = 'none';
     document.getElementById('contactSuccess').style.display = 'block';
 
